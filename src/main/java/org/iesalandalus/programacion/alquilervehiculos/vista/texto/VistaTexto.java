@@ -1,14 +1,17 @@
 package org.iesalandalus.programacion.alquilervehiculos.vista.texto;
 
+import org.iesalandalus.programacion.alquilervehiculos.controlador.Controlador;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Alquiler;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Vehiculo;
 import org.iesalandalus.programacion.alquilervehiculos.vista.Vista;
 
 public class VistaTexto extends Vista {
+	private Controlador controlador;
 
-	public void VistaTexto() {
-		
+	public  VistaTexto() {
+		super();
+		Accion.setVista(this);
 	}
 
 	public void comenzar() {
@@ -19,7 +22,7 @@ public class VistaTexto extends Vista {
 		getControlador().terminar();
 	}
 
-	private void insertarCliente() {
+	public void insertarCliente() {
 
 		try {
 			controlador.insertar(Consola.leerCliente());
@@ -29,16 +32,16 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void insertarTurismo() {
+	public void insertarVehiculo() {
 		try {
-			controlador.insertar(Consola.leerTurismo());
+			controlador.insertar(Consola.leerVehiculo());
 			System.out.println("El turismo ha sido introducido.");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	private void insertarAlquiler() {
+	public void insertarAlquiler() {
 		try {
 			controlador.insertar(Consola.leerAlquiler());
 			System.out.println("El alquiler ha sido introducido");
@@ -47,7 +50,7 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void buscarCliente() {
+	public void buscarCliente() {
 		try {
 			System.out.println(controlador.buscar(Consola.leerClienteDni()));
 
@@ -56,15 +59,15 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void buscarTurismo() {
+	public void buscarVehiculo() {
 		try {
-			System.out.println(controlador.buscar(Consola.leerTurismoMatricula()));
+			System.out.println(controlador.buscar(Consola.leerVehiculoMatricula()));
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
 	}
 
-	private void buscarAlquiler() {
+	public void buscarAlquiler() {
 		try {
 			controlador.buscar(Consola.leerAlquiler());
 		} catch (Exception e) {
@@ -72,7 +75,7 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void modificarCliente() {
+	public void modificarCliente() {
 		try {
 			controlador.modificar(Consola.leerClienteDni(), Consola.leerNombre(), Consola.leerTelefono());
 			System.out.println("El cliente ha sido modificado");
@@ -81,15 +84,24 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void devolverAlquiler() {
+	public void devolverAlquilerCliente() {
 		try {
-			controlador.devolver(Consola.leerAlquiler(), Consola.leerFechaDevolucion());
+			controlador.devolverAlquilerCliente(Consola.leerClienteDni(), Consola.leerFechaDevolucion());
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	private void borrarCliente() {
+	public void devolverAlquilerVehiculo() {
+		try {
+			controlador.devolverAlquilerVehiculo(Consola.leerVehiculoMatricula(), Consola.leerFechaDevolucion());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void borrarCliente() {
 		try {
 			controlador.borrar(Consola.leerCliente());
 			System.out.println("El cliente ha sido borrado");
@@ -98,16 +110,16 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void borrarTurismo() {
+	public void borrarVehiculo() {
 		try {
-			controlador.borrar(Consola.leerTurismo());
+			controlador.borrar(Consola.leerVehiculo());
 			System.out.println("El turismo ha sido borrado");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	private void borrarAlquiler() {
+	public void borrarAlquiler() {
 		try {
 			controlador.borrar(Consola.leerAlquiler());
 			System.out.println("El alquiler ha sido borrado");
@@ -116,7 +128,7 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void listarClientes() {
+	public void listarClientes() {
 		try {
 			for (Cliente cliente : controlador.getClientes()) {
 				System.out.println(cliente.toString());
@@ -127,10 +139,10 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void listarTurismos() {
+	public void listarVehiculos() {
 		try {
-			for (Turismo turismos : controlador.getTurismos()) {
-				System.out.println(turismos.toString());
+			for (Vehiculo vehiculos : controlador.getVehiculos()) {
+				System.out.println(vehiculos.toString());
 			}
 
 		} catch (Exception e) {
@@ -138,7 +150,7 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void listarAlquileres() {
+	public void listarAlquileres() {
 		try {
 			for (Alquiler alquileres : controlador.getAlquileres()) {
 				System.out.println(alquileres.toString());
@@ -149,7 +161,7 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void listarAlquileresCliente() {
+	public void listarAlquileresCliente() {
 		try {
 			for (Alquiler alquileresC : controlador.getAlquileres(Consola.leerClienteDni())) {
 				System.out.println(alquileresC.toString());
@@ -160,9 +172,9 @@ public class VistaTexto extends Vista {
 		}
 	}
 
-	private void listarAlquileresTurismo() {
+	public void listarAlquileresTurismo() {
 		try {
-			for (Alquiler alquileresT : controlador.getAlquileres(Consola.leerTurismoMatricula()))
+			for (Alquiler alquileresT : controlador.getAlquileres(Consola.leerVehiculoMatricula()))
 				System.out.println(alquileresT.toString());
 
 		} catch (Exception e) {

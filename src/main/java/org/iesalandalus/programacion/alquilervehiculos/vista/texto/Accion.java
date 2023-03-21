@@ -1,7 +1,6 @@
 package org.iesalandalus.programacion.alquilervehiculos.vista.texto;
 
 public enum Accion {
-
 	SALIR("Salir") {
 		@Override
 		public void ejecutar() {

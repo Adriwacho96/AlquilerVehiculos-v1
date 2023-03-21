@@ -83,7 +83,7 @@ public class Consola {
 		return leerCadena("Introduce un telefono");
 	}
 
-	public static Vehiculo leerTurismo() {
+	public static Vehiculo leerVehiculo() {
 		return Vehiculo.copiar(leerCadena("Introduce una marca"), leerCadena("Introduce un modelo"),
 				leerEntero("Introduce la cilindrada"), leerCadena("Introduce una matricula"));
 	}
