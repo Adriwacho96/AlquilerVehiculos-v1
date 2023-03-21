@@ -19,10 +19,9 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Alquiler;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Vehiculo;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IAlquileres;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IClientes;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IFuenteDatos;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IVehiculos;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria.Alquileres;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria.Clientes;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria.Alquileres;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria.Vehiculos;
 import org.junit.jupiter.api.BeforeAll;
@@ -44,11 +43,11 @@ public class ModeloTest {
 	private static IFuenteDatos fuenteDatos;
 
 	@Mock
-	private static IClientes clientes;
+	private static Clientes clientes;
 	@Mock
-	private static IVehiculos vehiculos;
+	private static Vehiculos vehiculos;
 	@Mock
-	private static IAlquileres alquileres;
+	private static Alquileres alquileres;
 
 	private static Cliente cliente;
 	private static Turismo turismo;

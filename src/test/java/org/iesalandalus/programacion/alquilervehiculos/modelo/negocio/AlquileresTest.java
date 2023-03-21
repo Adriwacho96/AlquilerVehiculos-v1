@@ -16,8 +16,8 @@ import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Alquiler;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Vehiculo;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria.Alquileres;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria.Alquileres;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,13 +45,13 @@ public class AlquileresTest {
 	private static Alquiler alquiler4;
 	private static Cliente cliente1;
 	private static Cliente cliente2;
-	private static Turismo turismo1;
-	private static Turismo turismo2;
+	private static Vehiculo turismo1;
+	private static Vehiculo turismo2;
 	private static LocalDate hoy;
 	private static LocalDate ayer;
 	private static LocalDate anteayer;
 	private static LocalDate semanaPasada;
-	private IAlquileres alquileres;
+	private org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IAlquileres alquileres;
 
 	@BeforeAll
 	static void setup() {
